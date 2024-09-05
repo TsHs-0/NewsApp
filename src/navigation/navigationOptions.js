@@ -1,5 +1,5 @@
 import {homeIcon, savedIcon} from '../assets';
-import {HomePage, NewsReadPage} from '../pages';
+import {HomePage, NewsReadPage, SavedNews} from '../pages';
 import {HOME, MAIN, NEWS_READ_PAGE, SAVED_NEWS} from '../utils/constants';
 import {TabNavigation} from './TabNavigation';
 import {IconButton} from '../components/buttons/IconButton';
@@ -11,7 +11,7 @@ export const SCREENS = [
 
 export const TAB_SCREENS = [
   {name: HOME, component: HomePage},
-  {name: SAVED_NEWS, component: NewsReadPage},
+  {name: SAVED_NEWS, component: SavedNews},
 ];
 
 export const tabScreenOptions = (tabProps, colors) => ({
@@ -24,18 +24,18 @@ export const tabScreenOptions = (tabProps, colors) => ({
   tabBarInactiveTintColor: 'gray',
   tabBarIcon: props => (
     <IconButton
-      iconSize={28}
+      iconSize={24}
       tintColor={props.color}
       source={tabProps.route.name === HOME ? homeIcon : savedIcon}
       text={tabProps.route.name}
       onPress={() => onPressTabIconHandler(tabProps)}
-      textStyle={{color: props.color}}
+      textStyle={{color: props.color, width: '100%'}}
     />
   ),
 });
 
 const onPressTabIconHandler = tabProps => {
-  if (!tabProps.isFocused) {
-    tabProps.navigation.navigate(tabProps.route.name, tabProps.route.params);
+  if (!tabProps.navigation.isFocused()) {
+    tabProps.navigation.navigate(tabProps.route.name);
   }
 };

@@ -1,12 +1,12 @@
 import React, {memo} from 'react';
 import {arrowIcon, savedIcon} from '../../assets';
-import {styles} from './styles';
 import {useNavigation} from '@react-navigation/native';
 import {MAIN} from '../../utils/constants';
 import {IconButton} from '../../components/buttons/IconButton';
+import {styles} from './styles';
 
 export const ButtonsView = memo(
-  ({saveLoading = false, onSavePress = () => {}}) => {
+  ({saveLoading = false, onSavePress = () => {}, showSaveButton = true}) => {
     const navigation = useNavigation();
     return (
       <>
@@ -15,12 +15,14 @@ export const ButtonsView = memo(
           style={{...styles.buttonCore, ...styles.backButton}}
           onPress={() => navigation.navigate(MAIN)}
         />
-        <IconButton
-          source={savedIcon}
-          style={{...styles.buttonCore, ...styles.saveButton}}
-          onPress={onSavePress}
-          loading={saveLoading}
-        />
+        {showSaveButton && (
+          <IconButton
+            source={savedIcon}
+            style={{...styles.buttonCore, ...styles.saveButton}}
+            onPress={onSavePress}
+            loading={saveLoading}
+          />
+        )}
       </>
     );
   },

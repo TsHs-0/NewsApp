@@ -1,4 +1,4 @@
 import React from 'react';
-import {AppNavigation} from './src/navigation';
+import {AppProvider} from './src/provider/ProviderView';
 
-export const App = () => <AppNavigation />;
+export const App = () => <AppProvider />;

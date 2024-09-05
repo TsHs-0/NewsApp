@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flexDirection: 'row',
     alignItems: 'center',
+    paddingBottom: 12,
   },
   inputOuterView: {width: '80%', overflow: 'hidden', alignItems: 'flex-end'},
   input: {

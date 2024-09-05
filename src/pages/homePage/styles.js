@@ -4,7 +4,7 @@ import {fillSizes} from '../../utils/styles';
 export const styles = StyleSheet.create({
   mainView: {
     ...fillSizes('100%'),
-    paddingTop: 20,
+    paddingTop: 4,
     paddingHorizontal: 20,
   },
 });

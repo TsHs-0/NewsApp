@@ -8,6 +8,7 @@ import homeIcon from './icons/home.png';
 import savedIcon from './icons/save.png';
 import emptyImage from './icons/emptyImage.png';
 import arrowIcon from './icons/arrow.png';
+import trashIcon from './icons/trash.png';
 
 export {
   mainLogo,
@@ -20,4 +21,5 @@ export {
   savedIcon,
   emptyImage,
   arrowIcon,
+  trashIcon,
 };

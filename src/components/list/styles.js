@@ -2,6 +2,23 @@ import {StyleSheet} from 'react-native';
 import {fillSizes} from '../../utils/styles';
 
 export const styles = StyleSheet.create({
+  //masonry
+  emptyListView: {alignSelf: 'center', marginTop: 20},
+  emptyListText: {color: 'gray', fontSize: 20, fontWeight: 'bold'},
+  masonryContentView: {
+    width: '100%',
+    position: 'absolute',
+    bottom: 0,
+    backgroundColor: 'rgba(255,255,255, 0.8)',
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+  },
+  masonryMainView: {
+    width: '100%',
+    margin: 8,
+  },
+
+  //list
   mainView: {
     marginTop: 10,
     width: '100%',

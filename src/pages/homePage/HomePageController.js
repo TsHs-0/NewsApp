@@ -1,75 +1,83 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {ActivityIndicator} from 'react-native';
-import {ListElement} from '../../components/listElement/ListElement';
-import {getNews} from '../../utils/rest';
 import {NEWS_READ_PAGE} from '../../utils/constants';
 import {useNavigation} from '@react-navigation/native';
+import {toastMessages} from '../../utils/toast';
+import {useDispatch, useSelector} from 'react-redux';
+import {getArticles} from './HomeModel';
+import {addLoading} from '../../redux/slices/homeSlice';
 
 export const HomePageController = () => {
+  const dispatch = useDispatch();
   const navigation = useNavigation();
-  const [data, setData] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
   const [refresh, setRefresh] = useState(false);
   const [loadMore, setLoadMore] = useState(false);
+  const [isMasonry, setIsMasonry] = useState(false);
+  const {contentData, currentPage, loading, keyword} = useSelector(
+    state => state.home,
+  );
+  const {internetAvailable} = useSelector(state => state.index);
 
-  const fetchData = async page => {
-    const response = await getNews({
-      keyword: 'Solar system',
-      pageSize: 10,
-      currentPage: page,
-    });
-    setCurrentPage(response?.data?.response?.currentPage);
-    const newData = response?.data?.response?.results;
-    setData(prev => (page == 1 ? newData : [...prev, ...(newData || [])]));
-  };
+  const getContent = useCallback(
+    async page => {
+      await dispatch(getArticles({page, keyword})).then(res => {
+        if (!res) {
+          if (page > 1) {
+            toastMessages.error_load_more_articles();
+          } else {
+            toastMessages.error_load_content();
+          }
+        }
+      });
+    },
+    [keyword],
+  );
 
   useEffect(() => {
-    fetchData(1);
+    dispatch(addLoading(true));
+    getContent(1).finally(() => {
+      dispatch(addLoading(false));
+    });
   }, []);
 
-  const onPressElement = id => {
+  const onOpenHandle = useCallback(id => {
     navigation.navigate(NEWS_READ_PAGE, {id});
-  };
-
-  const renderItem = useCallback(
-    item => (
-      <ListElement
-        id={item.id}
-        title={item.fields.headline}
-        date={item.webPublicationDate}
-        imageUri={item.fields.thumbnail}
-        onPress={onPressElement}
-      />
-    ),
-    [data],
-  );
+  }, []);
 
   const onEndReached = useCallback(async () => {
     if (!loadMore) {
       setLoadMore(true);
       const nextPage = currentPage + 1;
-      await fetchData(nextPage);
+      await getContent(nextPage);
       setLoadMore(false);
     }
-  }, [currentPage, loadMore]);
+  }, [loadMore, currentPage]);
 
-  const onRefresh = async () => {
+  const onRefresh = useCallback(async () => {
     setRefresh(true);
-    await fetchData(1);
+    await getContent(1);
     setRefresh(false);
-  };
+  }, []);
 
   const listFooterComponent = useCallback(
     () => (loadMore ? <ActivityIndicator size="small" /> : null),
     [loadMore],
   );
 
+  const onListVewChange = useCallback(() => {
+    setIsMasonry(!isMasonry);
+  }, [isMasonry]);
+
   return {
-    data,
+    data: contentData,
     refresh,
-    renderItem,
-    onEndReached,
+    loading,
+    isMasonry,
+    internetAvailable,
     onRefresh,
+    onEndReached,
+    onOpenHandle,
+    onListVewChange,
     listFooterComponent,
   };
 };

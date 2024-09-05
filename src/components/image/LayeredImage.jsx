@@ -1,7 +1,6 @@
 import React from 'react';
 import {Image, View} from 'react-native';
 import {emptyImage} from '../../assets';
-import {fillSizes} from '../../utils/styles';
 
 export const LayeredImage = ({
   source = '',
@@ -15,16 +14,18 @@ export const LayeredImage = ({
       <Image
         resizeMode="cover"
         source={backSource || source || emptyImage}
-        style={{...fillSizes(size)}}
+        style={{width: '100%', height: size}}
         blurRadius={backImageBlurRadius}
       />
       <Image
         resizeMode="contain"
         source={frontSource || source || emptyImage}
         style={{
-          ...fillSizes(size),
+          height: size,
+          width: '100%',
           position: 'absolute',
         }}
+        onLoad={event => console.log(event.nativeEvent)}
       />
     </View>
   );

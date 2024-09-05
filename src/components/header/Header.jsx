@@ -1,16 +1,22 @@
-import React from 'react';
-import {Image, TextInput, useColorScheme, View} from 'react-native';
-import Animated from 'react-native-reanimated';
+import React, {memo} from 'react';
+import {Image, View} from 'react-native';
 import {fillSizes} from '../../utils/styles';
 import {closeIcon, mainLogo, searchIcon} from '../../assets';
 import {IconButton} from '../buttons/IconButton';
 import {styles} from './styles';
 import {HeaderController} from './HeaderController';
 import {useTheme} from '@react-navigation/native';
+import {SearchBar} from './SearchBar';
 
-export const Header = () => {
-  const {animatedStyle, isSearchOpen, searchInputRef, searchButtonPressHandle} =
-    HeaderController();
+export const Header = memo(() => {
+  const {
+    keyword,
+    setKeyword,
+    animatedStyle,
+    isSearchOpen,
+    searchInputRef,
+    searchButtonPressHandle,
+  } = HeaderController();
 
   const {colors} = useTheme();
 
@@ -21,23 +27,16 @@ export const Header = () => {
         source={mainLogo}
         style={{...fillSizes(20)}}
       />
-      <View style={styles.inputOuterView}>
-        <Animated.View
-          style={{
-            ...animatedStyle,
-            alignSelf: 'flex-end',
-          }}>
-          <TextInput
-            ref={searchInputRef}
-            placeholder="Search..."
-            style={styles.input}
-          />
-        </Animated.View>
-      </View>
+      <SearchBar
+        value={keyword}
+        setValue={setKeyword}
+        animatedStyle={animatedStyle}
+        searchInputRef={searchInputRef}
+      />
       <IconButton
         source={isSearchOpen ? closeIcon : searchIcon}
         onPress={searchButtonPressHandle}
       />
     </View>
   );
-};
+});
