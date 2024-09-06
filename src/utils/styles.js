@@ -5,8 +5,8 @@ export const MyTheme = {
   colors: {
     primary: '#0051CA',
     background: 'white',
-    card: 'rgb(255, 255, 255)',
+    card: 'white',
     text: 'black',
-    border: 'rgb(199, 199, 204)',
+    border: 'gray',
   },
 };

@@ -18,6 +18,17 @@ export const HomePageController = () => {
   );
   const {internetAvailable} = useSelector(state => state.index);
 
+  useEffect(() => {
+    if (internetAvailable) {
+      dispatch(addLoading(true));
+      getContent(1).finally(() => {
+        dispatch(addLoading(false));
+      });
+    } else {
+      dispatch(addLoading(false));
+    }
+  }, [internetAvailable]);
+
   const getContent = useCallback(
     async page => {
       await dispatch(getArticles({page, keyword})).then(res => {
@@ -33,13 +44,6 @@ export const HomePageController = () => {
     [keyword],
   );
 
-  useEffect(() => {
-    dispatch(addLoading(true));
-    getContent(1).finally(() => {
-      dispatch(addLoading(false));
-    });
-  }, []);
-
   const onOpenHandle = useCallback(id => {
     navigation.navigate(NEWS_READ_PAGE, {id});
   }, []);
@@ -51,13 +55,13 @@ export const HomePageController = () => {
       await getContent(nextPage);
       setLoadMore(false);
     }
-  }, [loadMore, currentPage]);
+  }, [loadMore, currentPage, keyword]);
 
   const onRefresh = useCallback(async () => {
     setRefresh(true);
     await getContent(1);
     setRefresh(false);
-  }, []);
+  }, [keyword]);
 
   const listFooterComponent = useCallback(
     () => (loadMore ? <ActivityIndicator size="small" /> : null),

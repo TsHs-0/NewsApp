@@ -5,3 +5,6 @@ export const SAVED_NEWS = 'Saved News';
 
 //
 export const APP_NAME = 'TheGuardian';
+
+//
+export const DEFAULT_HEIGHT = 300;

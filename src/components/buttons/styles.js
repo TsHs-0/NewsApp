@@ -1,7 +1,8 @@
 import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
-  mainView: {
-    paddingHorizontal: 15,
+  containerView: {
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

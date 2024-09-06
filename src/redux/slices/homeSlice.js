@@ -3,7 +3,6 @@ import {createSlice} from '@reduxjs/toolkit';
 const initialState = {
   contentData: [],
   currentPage: 1,
-  resultsCount: 0,
   loading: true,
   keyword: '',
 };
@@ -16,9 +15,6 @@ const reducers = {
   },
   addCurrentPage: (state, action) => {
     state.currentPage = action.payload;
-  },
-  addResultsCount: (state, action) => {
-    state.resultsCount = action.payload;
   },
   addLoading: (state, action) => {
     state.loading = action.payload;
@@ -34,11 +30,6 @@ const homeSlice = createSlice({
   reducers,
 });
 
-export const {
-  addContentData,
-  addCurrentPage,
-  addResultsCount,
-  addLoading,
-  addKeyword,
-} = homeSlice.actions;
+export const {addContentData, addCurrentPage, addLoading, addKeyword} =
+  homeSlice.actions;
 export default homeSlice.reducer;

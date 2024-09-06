@@ -1,13 +1,13 @@
 import {MasonryFlashList} from '@shopify/flash-list';
 import React, {memo, useCallback} from 'react';
-import {ListElement} from './ListElement';
+import {ListElement} from './listElement/ListElement';
 
 export const ListView = memo(
   ({
+    data = [],
     masonry = false,
     onOpenHandle = () => {},
     onDeleteHandle = () => {},
-    data = [],
     ...props
   }) => {
     const renderItem = useCallback(

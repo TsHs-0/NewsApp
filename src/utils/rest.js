@@ -24,7 +24,7 @@ const createSingleElementQuery = ({id}) =>
 export const getNews = async ({
   id = null,
   keyword = '',
-  pageSize = 14,
+  pageSize = 12,
   currentPage = 1,
 }) => {
   let queryParams = '';
@@ -60,10 +60,7 @@ export const getArticleImage = async ({url = ''}) => {
     });
 
     const toFile =
-      location +
-      '/' +
-      new Date().getTime() +
-      url.split('/').slice(-1).pop();
+      location + '/' + new Date().getTime() + url.split('/').slice(-1).pop();
 
     const download = await RNFS.downloadFile({
       fromUrl: url,
@@ -75,5 +72,7 @@ export const getArticleImage = async ({url = ''}) => {
     } else {
       return false;
     }
-  } catch (error) {}
+  } catch (error) {
+    return false;
+  }
 };

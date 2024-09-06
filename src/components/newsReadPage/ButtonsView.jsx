@@ -2,7 +2,7 @@ import React, {memo} from 'react';
 import {arrowIcon, savedIcon} from '../../assets';
 import {useNavigation} from '@react-navigation/native';
 import {MAIN} from '../../utils/constants';
-import {IconButton} from '../../components/buttons/IconButton';
+import {IconButton} from '../buttons/IconButton';
 import {styles} from './styles';
 
 export const ButtonsView = memo(

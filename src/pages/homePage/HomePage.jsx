@@ -34,8 +34,9 @@ export const HomePage = () => {
           <IconButton
             iconSize={24}
             onPress={onListVewChange}
+            style={styles.listViewButton}
             source={!isMasonry ? gridIcon : listIcon}
-            style={{alignSelf: 'flex-end'}}
+            disabled={!internetAvailable && !data.length}
           />
           <ListView
             data={data}

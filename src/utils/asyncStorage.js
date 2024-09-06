@@ -7,13 +7,17 @@ export const saveArticleToTheStorage = async ({item, all}) => {
     if (all) {
       res = all;
     } else {
-      res = JSON.parse((await AsyncStorage.getItem(APP_NAME)) || '[]');
-      res.unshift(item);
+      res = [
+        item,
+        ...JSON.parse((await AsyncStorage.getItem(APP_NAME)) || '[]').filter(
+          e => e.id !== item.id,
+        ),
+      ];
     }
     AsyncStorage.setItem(APP_NAME, JSON.stringify(res));
     return true;
   } catch (error) {
-    return error;
+    return false;
   }
 };
 

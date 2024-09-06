@@ -9,8 +9,8 @@ export const getArticles =
       currentPage: page,
     });
     if (response.done) {
-      dispatch(addCurrentPage(page));
       const newData = response?.data?.response?.results;
+      dispatch(addCurrentPage(page));
       dispatch(addContentData({add: page != 1, data: newData}));
       return true;
     } else {

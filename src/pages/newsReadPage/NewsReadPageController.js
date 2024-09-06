@@ -24,6 +24,7 @@ export const NewsReadPageController = () => {
       setLoading(false);
     } else {
       navigation.navigate(MAIN);
+      toastMessages.error_load_content();
     }
   };
 
@@ -54,11 +55,13 @@ export const NewsReadPageController = () => {
           body: body?.body,
         },
       })
-        .then(() => toastMessages.success_storage_save())
-        .catch(() => toastMessages.error_storage_save())
-        .finally(() => {
-          setSaveLoading(false);
-        });
+        .then(res =>
+          res
+            ? toastMessages.success_storage_save()
+            : toastMessages.error_storage_save(),
+        )
+        .catch((error) => toastMessages.error_storage_save())
+        .finally(() => setSaveLoading(false));
     } else {
       toastMessages.error_storage_save();
     }

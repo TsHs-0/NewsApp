@@ -3,7 +3,7 @@ import {
   getArticlesFromStorage,
   saveArticleToTheStorage,
 } from '../../utils/asyncStorage';
-import {ListElement} from '../../components/list/ListElement';
+import {ListElement} from '../../components/list/listElement/ListElement';
 import {NEWS_READ_PAGE} from '../../utils/constants';
 import {toastMessages} from '../../utils/toast';
 import {useIsFocused} from '@react-navigation/native';
@@ -15,21 +15,15 @@ export const SavedNewsController = navigation => {
   const isFocused = useIsFocused();
 
   useEffect(() => {
-    if (isFocused) {
-      getStoredData();
-    }
+    if (isFocused) getStoredData();
   }, [isFocused]);
 
   const getStoredData = useCallback(async () => {
     setLoading(true);
     await getArticlesFromStorage()
-      .then(result => {
-        setData(result);
-      })
-      .catch(() => {})
-      .finally(() => {
-        setLoading(false);
-      });
+      .then(result => setData(result))
+      .catch(() => toastMessages.error_load_saved_articles())
+      .finally(() => setLoading(false));
   }, []);
 
   const removeArticleFromStorage = useCallback(
@@ -37,9 +31,7 @@ export const SavedNewsController = navigation => {
       const result = data.filter(e => e.id != id);
       setData(result);
       await saveArticleToTheStorage({all: result}).then(res => {
-        if (!res) {
-          toastMessages.error_storage_save();
-        }
+        if (!res) toastMessages.error_storage_save();
       });
     },
     [data],

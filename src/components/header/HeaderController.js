@@ -4,8 +4,8 @@ import {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import {getArticles} from '../../pages/homePage/HomeModel';
 import {useDispatch, useSelector} from 'react-redux';
+import {getArticles} from '../../pages/homePage/HomeModel';
 import {addKeyword, addLoading} from '../../redux/slices/homeSlice';
 
 export const HeaderController = () => {

@@ -1,3 +1,3 @@
-export const NO_DATA = 'There is no data!';
-export const INTERNET_CHECK = `Check the internet connection or it's stability, and try latter.`;
-export const NO_INTERNET = 'There is no internet connection';
+export const NO_DATA = 'No data is available!';
+export const INTERNET_CHECK = `Make sure the internet connection is stable and try again later!`;
+export const NO_INTERNET = 'The internet is not accessible';

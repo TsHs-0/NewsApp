@@ -1,12 +1,13 @@
 import React, {useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import NetInfo from '@react-native-community/netinfo';
+import {useDispatch} from 'react-redux';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {MyTheme} from '../utils/styles';
 import {SCREENS} from './navigationOptions';
-import {useDispatch} from 'react-redux';
-import NetInfo from '@react-native-community/netinfo';
 import {setInternetAvailable} from '../redux/slices/indexSlice';
+import {toastMessages} from '../utils/toast';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +17,9 @@ export const Navigation = () => {
   useEffect(() => {
     const unsubscribe = NetInfo.addEventListener(state => {
       dispatch(setInternetAvailable(state.isConnected));
+      if (!state.isConnected) {
+        toastMessages.error_connection();
+      }
     });
 
     return () => unsubscribe();

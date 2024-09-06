@@ -13,25 +13,19 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 8,
   },
-  masonryMainView: {
-    width: '100%',
-    margin: 8,
-  },
 
-  //list
+  //
   mainView: {
-    marginTop: 10,
     width: '100%',
-    backgroundColor: 'white',
-    flexDirection: 'row',
-    borderRadius: 8,
     overflow: 'hidden',
     borderWidth: 0.3,
     borderColor: 'gray',
   },
+
+  //list
   thumbnailImageView: {
     ...fillSizes('100%'),
-    flex: 0.3,
+    flex: 0.7,
     alignSelf: 'center',
     justifyContent: 'center',
   },
@@ -42,7 +36,7 @@ export const styles = StyleSheet.create({
 
   //content
   contentView: {
-    flex: 0.7,
+    flex: 0.3,
     paddingVertical: 12,
     paddingHorizontal: 12,
   },
@@ -54,7 +48,9 @@ export const styles = StyleSheet.create({
   },
   contentDate: {fontSize: 14, color: 'black'},
   contentSaveButton: {
+    right: 20,
+    bottom: 12,
+    position: 'absolute',
     alignSelf: 'flex-end',
-    marginTop: 12,
   },
 });

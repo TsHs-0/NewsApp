@@ -2,7 +2,7 @@ import React, {memo} from 'react';
 import {ScrollView, Text, useWindowDimensions, View} from 'react-native';
 import RenderHTML from 'react-native-render-html';
 import {AdditionalInfo} from './AdditionalInfo';
-import {LayeredImage} from '../../components/image/LayeredImage';
+import {LayeredImage} from '../image/LayeredImage';
 import {styles} from './styles';
 
 export const ContentView = memo(
@@ -19,7 +19,7 @@ export const ContentView = memo(
     return (
       <ScrollView
         bounces={false}
-        showsVerticalScrollIndicator={false}
+        scrollEventThrottle={16}
         contentContainerStyle={styles.scrollContainer}>
         {/* image */}
         <LayeredImage size={400} source={image ? {uri: image} : ''} />

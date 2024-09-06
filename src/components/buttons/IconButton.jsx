@@ -1,20 +1,25 @@
 import React from 'react';
-import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
+import {Image, Pressable, Text, View} from 'react-native';
 import {fillSizes} from '../../utils/styles';
 import {Loader} from '../loader/Loader';
+import {styles} from './styles';
 
 export const IconButton = ({
+  style = {},
+  text = null,
   source = '',
   iconSize = 20,
-  tintColor = 'black',
-  text = null,
   textStyle = {},
-  onPress = () => {},
-  style = {},
   loading = false,
+  disabled = false,
+  tintColor = 'black',
+  onPress = () => {},
 }) => {
   return (
-    <Pressable onPress={onPress} style={style}>
+    <Pressable
+      disabled={disabled}
+      onPress={onPress}
+      style={{opacity: disabled ? 0.5 : 1, ...style}}>
       {loading ? (
         <Loader size="small" />
       ) : (
@@ -30,10 +35,3 @@ export const IconButton = ({
     </Pressable>
   );
 };
-
-const styles = StyleSheet.create({
-  containerView: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});

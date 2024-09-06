@@ -3,8 +3,9 @@ import {fillSizes} from '../../utils/styles';
 
 export const styles = StyleSheet.create({
   mainView: {
+    paddingTop: 8,
     ...fillSizes('100%'),
-    paddingTop: 4,
-    paddingHorizontal: 20,
+    paddingHorizontal: 12,
   },
+  listViewButton: {alignSelf: 'flex-end'},
 });

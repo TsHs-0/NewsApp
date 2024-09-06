@@ -11,10 +11,10 @@ import {SearchBar} from './SearchBar';
 export const Header = memo(() => {
   const {
     keyword,
-    setKeyword,
-    animatedStyle,
     isSearchOpen,
+    animatedStyle,
     searchInputRef,
+    setKeyword,
     searchButtonPressHandle,
   } = HeaderController();
 

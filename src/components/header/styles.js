@@ -13,6 +13,7 @@ export const styles = StyleSheet.create({
     borderColor: 'gray',
     borderWidth: 0.3,
     borderRadius: 8,
+    color: 'black',
     height: 50,
   },
 });

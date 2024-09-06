@@ -1,13 +1,13 @@
 import React from 'react';
 import {TextInput, View} from 'react-native';
-import {styles} from './styles';
 import Animated from 'react-native-reanimated';
+import {styles} from './styles';
 
 export const SearchBar = ({
   value = '',
-  setValue = () => {},
   animatedStyle = {},
   searchInputRef = null,
+  setValue = () => {},
 }) => {
   return (
     <View style={styles.inputOuterView}>
