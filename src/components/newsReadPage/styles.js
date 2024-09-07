@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {fillSizes} from '../../utils/styles';
+import {BLACK, fillSizes, GRAY, WHITE} from '../../utils/styles';
 
 export const styles = StyleSheet.create({
   mainView: {
@@ -11,9 +11,9 @@ export const styles = StyleSheet.create({
 
     zIndex: 10,
     padding: 20,
-    backgroundColor: 'white',
+    backgroundColor: WHITE,
     borderWidth: 0.3,
-    borderColor: 'gray',
+    borderColor: GRAY,
     borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
@@ -29,7 +29,7 @@ export const styles = StyleSheet.create({
   scrollContainer: {paddingBottom: 28},
   headerText: {
     fontSize: 32,
-    color: 'black',
+    color: BLACK,
     fontWeight: 'bold',
     marginTop: 16,
   },
@@ -38,6 +38,6 @@ export const styles = StyleSheet.create({
     gap: 8,
     marginTop: 12,
   },
-  additionalInfoElement: {fontSize: 16, color: 'black'},
+  additionalInfoElement: {fontSize: 16, color: BLACK},
   contentView: {marginTop: 18},
 });

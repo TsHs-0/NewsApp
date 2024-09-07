@@ -3,6 +3,7 @@ import {HomePage, NewsReadPage, SavedNews} from '../pages';
 import {HOME, MAIN, NEWS_READ_PAGE, SAVED_NEWS} from '../utils/constants';
 import {TabNavigation} from './TabNavigation';
 import {IconButton} from '../components/buttons/IconButton';
+import {BLUE, GRAY} from '../utils/styles';
 
 export const SCREENS = [
   {name: MAIN, component: TabNavigation},
@@ -14,14 +15,12 @@ export const TAB_SCREENS = [
   {name: SAVED_NEWS, component: SavedNews},
 ];
 
-export const tabScreenOptions = (tabProps, colors) => ({
+export const tabScreenOptions = tabProps => ({
   headerShown: false,
   tabBarShowLabel: false,
-  tabBarStyle: {
-    height: 80,
-  },
-  tabBarActiveTintColor: colors.primary,
-  tabBarInactiveTintColor: 'gray',
+  tabBarStyle: {height: 80},
+  tabBarActiveTintColor: BLUE,
+  tabBarInactiveTintColor: GRAY,
   tabBarIcon: props => (
     <IconButton
       iconSize={24}

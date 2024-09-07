@@ -1,10 +1,10 @@
 import {StyleSheet} from 'react-native';
-import {fillSizes} from '../../utils/styles';
+import {BLACK, fillSizes, GRAY} from '../../utils/styles';
 
 export const styles = StyleSheet.create({
   //masonry
   emptyListView: {alignSelf: 'center', marginTop: 20},
-  emptyListText: {color: 'gray', fontSize: 20, fontWeight: 'bold'},
+  emptyListText: {color: GRAY, fontSize: 20, fontWeight: 'bold'},
   masonryContentView: {
     width: '100%',
     position: 'absolute',
@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
     width: '100%',
     overflow: 'hidden',
     borderWidth: 0.3,
-    borderColor: 'gray',
+    borderColor: GRAY,
   },
 
   //list
@@ -44,9 +44,9 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     marginTop: 4,
-    color: 'black',
+    color: BLACK,
   },
-  contentDate: {fontSize: 14, color: 'black'},
+  contentDate: {fontSize: 14, color: BLACK},
   contentSaveButton: {
     right: 20,
     bottom: 12,

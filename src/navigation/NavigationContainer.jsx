@@ -4,7 +4,6 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import NetInfo from '@react-native-community/netinfo';
 import {useDispatch} from 'react-redux';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {MyTheme} from '../utils/styles';
 import {SCREENS} from './navigationOptions';
 import {setInternetAvailable} from '../redux/slices/indexSlice';
 import {toastMessages} from '../utils/toast';
@@ -27,7 +26,7 @@ export const Navigation = () => {
 
   return (
     <SafeAreaProvider>
-      <NavigationContainer theme={MyTheme}>
+      <NavigationContainer>
         <Stack.Navigator screenOptions={{headerShown: false}}>
           {SCREENS.map(({name, component}) => (
             <Stack.Screen key={name} name={name} component={component} />

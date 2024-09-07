@@ -4,6 +4,7 @@ import {IconButton} from '../../buttons/IconButton';
 import {trashIcon} from '../../../assets';
 import {getStringData} from '../../../utils/functions';
 import {styles} from '../styles';
+import {RED} from '../../../utils/styles';
 
 export const ListTextContainer = memo(
   ({
@@ -21,7 +22,7 @@ export const ListTextContainer = memo(
       {hasRemove && (
         <View style={styles.contentSaveButton}>
           <IconButton
-            tintColor={'red'}
+            tintColor={RED}
             source={trashIcon}
             iconSize={24}
             onPress={onPress}

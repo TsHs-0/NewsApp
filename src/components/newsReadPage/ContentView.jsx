@@ -4,6 +4,7 @@ import RenderHTML from 'react-native-render-html';
 import {AdditionalInfo} from './AdditionalInfo';
 import {LayeredImage} from '../image/LayeredImage';
 import {styles} from './styles';
+import {BLACK} from '../../utils/styles';
 
 export const ContentView = memo(
   ({image = '', headline = '', date = '', author = '', body = ''}) => {
@@ -11,7 +12,7 @@ export const ContentView = memo(
 
     const content = {
       html:
-        '<body style="color:black;font-size:18px;padding:0 12px;">' +
+        `<body style="color:${BLACK};font-size:18px;padding:0 12px;">` +
         body +
         '</body>',
     };

@@ -2,6 +2,7 @@ import React from 'react';
 import {TextInput, View} from 'react-native';
 import Animated from 'react-native-reanimated';
 import {styles} from './styles';
+import {GRAY} from '../../utils/styles';
 
 export const SearchBar = ({
   value = '',
@@ -20,6 +21,7 @@ export const SearchBar = ({
           ref={searchInputRef}
           placeholder="Search..."
           style={styles.input}
+          placeholderTextColor={GRAY}
           value={value}
           onChangeText={setValue}
         />

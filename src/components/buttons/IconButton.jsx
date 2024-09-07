@@ -1,6 +1,6 @@
 import React from 'react';
 import {Image, Pressable, Text, View} from 'react-native';
-import {fillSizes} from '../../utils/styles';
+import {BLACK, fillSizes} from '../../utils/styles';
 import {Loader} from '../loader/Loader';
 import {styles} from './styles';
 
@@ -12,7 +12,7 @@ export const IconButton = ({
   textStyle = {},
   loading = false,
   disabled = false,
-  tintColor = 'black',
+  tintColor = BLACK,
   onPress = () => {},
 }) => {
   return (
